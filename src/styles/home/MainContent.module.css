@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    gap: 27px 23px;
+}
+.mainText{
+    font-size: 1.1rem;
+    max-width: 500px;
+}
+.mainText h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1ABC00;
+    margin-bottom: 1rem;
+}
+.mainText p {
+    margin-bottom: 1rem;
+}
+.mainImg {
+    max-width: 500px;
+    max-height: 500px;
+    display: flex;
+    position: relative;
+}
+
+.mainImg img {
+    width: 66%;
+    /* height: 59%; */
+}
+
+.bow {
+    position: absolute;
+    position: absolute;
+    top: -111px;
+    left: 79px;
+    transform: rotate(333deg);
+}
