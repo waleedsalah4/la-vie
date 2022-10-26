@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import mainPageImg from '../../assests/home/tree.png';
-import bow from '../../assests/home/Ellipse.png';
+import mainPageImg from '../../assests/home/tree1.png';
+// import bow from '../../assests/home/Ellipse.png';
 import classes from '../../styles/home/MainContent.module.css';
 
 function MainContent() {
@@ -11,7 +11,7 @@ function MainContent() {
             <div className={classes.mainImg}>
                 {/* <div></div> */}
                 <img src={mainPageImg} alt='main pic' />
-                <img src={bow} alt='img'  className={classes.bow}/>
+                {/* <img src={bow} alt='img'  className={classes.bow}/> */}
             </div>
             <div className={classes.mainText}>
                 <h1 className='text-green font-bold text-xl mb-4' >

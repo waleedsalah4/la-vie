@@ -7,10 +7,14 @@ module.exports = {
     extend: {},
     colors: {
       'green': '#1ABC00',
-      'white': '#fff'
+      'white': '#fff',
+      'grey': '#8D8D8D',
+      'black': '#000',
+      'footer': '##FAFAFA'
     },
     fontFamily: {
-      'Poppins': ['Poppins']
+      'Poppins': ['Poppins'],
+      'Meddon': ['Meddon']
     }
   },
   plugins: [],
