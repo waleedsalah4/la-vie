@@ -10,7 +10,11 @@ module.exports = {
       'white': '#fff',
       'grey': '#8D8D8D',
       'black': '#000',
-      'footer': '##FAFAFA'
+      'blue': '#337FFF',
+      'border': 'rgba(0, 0, 0, 0.26)',
+      'blogText': '#6C6C6C',
+      'heat': 'rgba(26, 188, 0, 0.05)',
+      'footer': '#FAFAFA',
     },
     fontFamily: {
       'Poppins': ['Poppins'],

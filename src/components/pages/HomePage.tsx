@@ -8,7 +8,7 @@ import AboutUs from '../home/AboutUs';
 import MobileApp from '../home/MobileApp';
 import Footer from '../home/Footer';
 
-function Home() {
+function HomePage() {
   return (
     <>
       <Header />
@@ -23,4 +23,4 @@ function Home() {
   )
 }
 
-export default Home
+export default HomePage

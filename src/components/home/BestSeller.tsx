@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import sell1 from '../../assests/home/image75.png';
 import sell2 from '../../assests/home/image71.png';
 import sell3 from '../../assests/home/image74.png';
@@ -33,12 +34,16 @@ const categories = [
 
 
 function BestSeller() {
+    const navigate = useNavigate();
+    const goToProductDetails = (id: string) => {
+        navigate(`/product-details/${id}`)
+    }
     return (
         <div className='px-10 py-16'>
             <h1 className='font-Poppins font-medium text-4xl mb-5 ml-10'>Best Seller</h1>
             <div className='flex items-center justify-around flex-wrap gap-x-6 gap-y-6'>
                 {categories.map((item, index) => (
-                    <div className={`flex flex-col items-start ${index % 2 !== 0 ? 'mt-24' : '' }`} key={item.id}>
+                    <div className={`flex flex-col items-start cursor-pointer ${index % 2 !== 0 ? 'mt-24' : '' }`} key={item.id} onClick={() => goToProductDetails(item.id)}>
                         <img src={item.img} alt='best seller img' className='w-52 h-52'/>
                         <p className='mt-4 font-bold text-xl' 
                         >{item.text}</p>

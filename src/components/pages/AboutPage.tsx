@@ -1,15 +1,15 @@
 import React from 'react'
 import Header from '../ui/Header'
 
-function About() {
+function AboutPage() {
   return (
     <div>
       <Header />
       <div>
-      About
+        AboutPage
       </div>
     </div>
   )
 }
 
-export default About
+export default AboutPage
