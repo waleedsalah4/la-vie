@@ -1,80 +1,62 @@
-import * as React from 'react';
+import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Notification from './Notification';
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
 import userAvatar from '../../assests/home/avatar.png';
-import { red } from '@mui/material/colors';
-
-import Notification from './Notification';
 import logo from '../../assests/logo.png';
-import classes from '../../styles/ui/Header.module.css';
-
-const color = red[500];
+import HeaderLinks from './HeaderLinks';
 
 function Header() { 
+    const [openMenu, setOpenMenu] = React.useState<boolean>(false)
     const navigate = useNavigate()
 
     const goToSignPage = () => {
         navigate('/signup')
     }
+    const handleOpenMenu = () => {
+        setOpenMenu(!openMenu)
+    }
   return (
-    <header className={classes.header}>
-        <div className={classes.logo}>
-            La Vie <img src={logo}className={classes.logoImg} alt='logo' /> 
+    <header className='flex justify-between items-center p-4'>
+        <div className='flex relative font-Meddon text-3xl'>
+            La Vie <img src={logo} className='absolute left-10 top-0' alt='logo' /> 
         </div>
-        <div className={classes.links}>
-            <NavLink 
-                to="/" 
-                className={({ isActive }) => isActive ? `${classes.active} ${classes.link}` : classes.link} 
-                end
-            >
-                Home
-            </NavLink>
-            <NavLink 
-                to='/shop'
-                className={({ isActive }) => isActive ? `${classes.active} ${classes.link}` : classes.link}  
-            >
-                Shop
-            </NavLink>
-            <NavLink 
-                to='/blog'
-                className={({ isActive }) => isActive ? `${classes.active} ${classes.link}` : classes.link}  
-            >
-                Blog
-            </NavLink>
-            <NavLink 
-                to='/about' 
-                className={({ isActive }) => isActive ? `${classes.active} ${classes.link}` : classes.link} 
-            >
-                About</NavLink>
-            <NavLink 
-                to='/community' 
-                className={({ isActive }) => isActive ? `${classes.active} ${classes.link}` : classes.link} 
-            >
-                community
-            </NavLink>
+        <div className='hidden sm:flex gap-y-1 gap-x-8'>
+            <HeaderLinks />
         </div>
         <div className='flex items-center gap-x-5'>
-        <Badge badgeContent={4} color='error'>
-            <ShoppingCartIcon color="action" />
-        </Badge>
-        {/* <Badge badgeContent={4} color="error">
-            <NotificationsNoneIcon color="action" />
-        </Badge> */}
-        <Notification />
-        <Avatar
-            alt="user pic"
-            src={userAvatar}
-            sx={{ width: 24, height: 24 }}
-        />
+            <Badge badgeContent={4} color='error'>
+                <ShoppingCartIcon color="action" />
+            </Badge>
+            {/* <Badge badgeContent={4} color="error">
+                <NotificationsNoneIcon color="action" />
+            </Badge> */}
+            <Notification />
+            <Avatar
+                alt="user pic"
+                src={userAvatar}
+                sx={{ width: 24, height: 24 }}
+            />
             {/* <button className={classes.signBtn} onClick={goToSignPage}>Sign Up</button> */}
+        </div>
+        <div className='relative block sm:hidden' onClick={handleOpenMenu}>
+            <IconButton aria-label='menu-icon'>
+                <MenuIcon />
+            </IconButton>
+            {openMenu && <div className="absolute top-10 right-0 z-10 rounded-sm">
+                <div className='flex flex-col gap-y-1 gap-x-8 bg-footer p-4'>
+                    <HeaderLinks />
+                </div>
+            </div>}
         </div>
     </header>
   );
 }
 
 export default Header
-
 

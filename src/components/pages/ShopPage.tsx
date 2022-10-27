@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from '../ui/Header'
 
 function ShopPage() {
   return (
-    <div>ShopPage</div>
+    <>
+      <Header />
+      ShopPage
+    </>
   )
 }
 

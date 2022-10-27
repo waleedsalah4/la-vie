@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from '../ui/Header'
 
 function CommunityPage() {
   return (
-    <div>Community</div>
+    <>
+      <Header />
+      Community
+    </>
   )
 }
 

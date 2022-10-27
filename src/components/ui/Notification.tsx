@@ -9,9 +9,7 @@ import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
+
 
 import avatar from '../../assests/notifi/Avatar.png';
 import avatar1 from '../../assests/notifi/avatar1.png';
