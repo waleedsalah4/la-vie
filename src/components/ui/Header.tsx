@@ -1,12 +1,11 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Notification from './Notification';
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
 import userAvatar from '../../assests/home/avatar.png';
 import logo from '../../assests/logo.png';
 import HeaderLinks from './HeaderLinks';
@@ -17,6 +16,9 @@ function Header() {
 
     const goToSignPage = () => {
         navigate('/signup')
+    }
+    const goToCartPage = () => {
+        navigate('/cart')
     }
     const handleOpenMenu = () => {
         setOpenMenu(!openMenu)
@@ -31,7 +33,7 @@ function Header() {
         </div>
         <div className='flex items-center gap-x-5'>
             <Badge badgeContent={4} color='error'>
-                <ShoppingCartIcon color="action" />
+                <ShoppingCartIcon color="action" className='cursor-pointer' onClick={goToCartPage}/>
             </Badge>
             {/* <Badge badgeContent={4} color="error">
                 <NotificationsNoneIcon color="action" />
