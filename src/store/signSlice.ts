@@ -21,8 +21,10 @@ export const login = createAsyncThunk<signinInterface, Object|any>(
     async (data, thunkAPI) => {
       const { rejectWithValue } = thunkAPI;
       try {
+        console.log(data)
         const response = await fetch(`${baseURL}/api/v1/auth/signin`, {
             method: 'POST',
+            mode: 'no-cors',
             headers: {
               'Content-Type': 'application/json'
             },
@@ -52,9 +54,9 @@ export const signup = createAsyncThunk<signupInterface, Object|any>(
             },
             body: JSON.stringify(data)
         });
-        const res = await response.json();
-        console.log(res)
-        return res
+        // const res = await response.json();
+        console.log(response)
+        return response
           
       } catch (error) {
         console.log(error)
@@ -119,3 +121,4 @@ const signSlice = createSlice({
   });
 
 export default signSlice.reducer;
+

@@ -29,7 +29,7 @@ function ShopFilter() {
     };
     return (
         <>
-            <div>
+            <div className='sm:w-[20%]'>
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}

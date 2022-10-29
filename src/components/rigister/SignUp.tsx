@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { signup } from '../../store/signSlice';
+// import { signup } from '../../store/signSlice';
 import { useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from '../../store';
+// import { useAppDispatch, useAppSelector } from '../../store';
 // import FeedBack from '../utilities/FeedBack';
 import * as Yup from 'yup';
 
@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 
 
 function SignUp() {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const navigate = useNavigate();
   //const {userData, isLoading, signupError} = useSelector((state)=> state.signSlice)
 
@@ -46,8 +46,8 @@ function SignUp() {
 */
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = (data: object) => {
-    dispatch(signup(data))
-    // console.log(data)
+    // dispatch(signup(data))
+    console.log(data)
   };
 
   return (
@@ -59,7 +59,7 @@ function SignUp() {
             sx={{ mt: 3 }}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex flex-col gap-y-4'>
-                        <div className='flex flex-row gap-x-8 gap-y-8'>
+                        <div className='flex flex-col sm:flex-row gap-x-8 gap-y-8'>
                             <div className='flex flex-col gap-y-2'>
                                 <label>First Name</label>
                                 <input 

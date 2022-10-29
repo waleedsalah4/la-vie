@@ -7,7 +7,7 @@ function Shop() {
     return (
         <div className='px-10 py-10'>
             <h1 className='font-Poppins font-medium text-center text-2xl mb-8'>Plants</h1>
-            <div className='flex justify-between gap-x-12'>
+            <div className='flex flex-col sm:flex-row justify-between gap-x-12 gap-y-4'>
                 {/* <div className='flex flex-col'> */}
                     <ShopFilter />
                 {/* </div> */}

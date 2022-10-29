@@ -16,7 +16,7 @@ function SignInPage() {
     <>
     <Header />
     <div className='mt-7 flex flex-col items-center bg-footer'>
-        <div className='flex items-center justify-center gap-y-1 gap-x-28 w-4/5 border-b border-border'>
+        <div className='flex items-center justify-evenly gap-y-1 w-4/5 border-b border-border'>
             <button 
                 className='p-4 bg-none text-2xl border-b-2 border-green'
                 onClick={handleShowSignIn}
