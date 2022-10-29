@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Auth from '../rigister/Auth';
-import SignUp from '../rigister/SignUp';
-import Header from '../ui/Header';
+import Auth from '../components/rigister/Auth';
+import SignUp from '../components/rigister/SignUp';
+import Header from '../components/ui/Header';
 
 function SignUpPage() {
     const navigate = useNavigate()

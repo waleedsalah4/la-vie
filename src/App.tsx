@@ -2,16 +2,16 @@ import React from 'react';
 import './App.css';
 import {Routes, Route} from 'react-router-dom'
 // import Header from './components/ui/Header';
-import HomePage from './components/pages/HomePage';
-import ShopPage from './components/pages/ShopPage';
-import BlogPage from './components/pages/BlogPage';
-import AboutPage from './components/pages/AboutPage';
-import CommunityPage from './components/pages/CommunityPage';
-import SignInPage from './components/pages/SignInPage';
-import SignUpPage from './components/pages/SignUpPage';
-import SingleBlogPage from './components/pages/SingleBlogPage';
-import ProductDetailsPage from './components/pages/ProductDetailsPage';
-import CartPage from './components/pages/CartPage';
+import HomePage from './pages/HomePage';
+import ShopPage from './pages/ShopPage';
+import BlogPage from './pages/BlogPage';
+import AboutPage from './pages/AboutPage';
+import CommunityPage from './pages/CommunityPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
+import SingleBlogPage from './pages/SingleBlogPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import CartPage from './pages/CartPage';
 
 function App() {
   return (

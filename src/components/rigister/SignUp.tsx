@@ -98,7 +98,7 @@ function SignUp() {
                             />
                             {errors.email && <p>This field is required</p>}
                         </div>
-                        <div className='flex flex-col gap-y-2'>
+                        {/* <div className='flex flex-col gap-y-2'>
                             <label>Confirm Password</label>
                             <input 
                               {...register("confirmPassword", { required: true })} 
@@ -106,7 +106,7 @@ function SignUp() {
                               className='p-3 rounded-md outline-none border-2 border-border bg-footer'
                               />
                               {errors.email && <p>This field is required</p>}
-                        </div> 
+                        </div>  */}
                   </div>
                   <Button
                     type="submit"

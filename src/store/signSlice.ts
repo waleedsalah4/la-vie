@@ -7,10 +7,16 @@ interface signupInterface {
   lastName: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  // confirmPassword: string;
+}
+interface signinInterface { 
+
+  email: string;
+  password: string;
+  // confirmPassword: string;
 }
 
-export const login = createAsyncThunk(
+export const login = createAsyncThunk<signinInterface, Object|any>(
   'sign/logIn', 
     async (data, thunkAPI) => {
       const { rejectWithValue } = thunkAPI;
@@ -18,7 +24,7 @@ export const login = createAsyncThunk(
         const response = await fetch(`${baseURL}/api/v1/auth/signin`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         });
@@ -78,38 +84,38 @@ const signSlice = createSlice({
     initialState,
     reducers: {
     },
-    /*
-    extraReducers:(builder: ActionReducerMapBuilder<userDataState>) => {
+    
+    extraReducers:(builder) => {
       
       builder.addCase(login.pending, (state, action) => {
         state.isLoading = true;
         state.LogError = null;
-      }),
+      })
       builder.addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLogged= true;
-        state.userData = action.payload.userData;
-      }),
+        state.userData = action.payload;
+      })
       builder.addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.LogError = action.payload;
-      }),
+      })
 
       //sign up
       builder.addCase(signup.pending, (state, action) => {
         state.isLoading = true;
         state.signupError = null;
-      }),
+      })
       builder.addCase(signup.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLogged= true;
         state.userData = action.payload;
-      }),
+      })
       builder.addCase(signup.rejected, (state, action) => {
         state.isLoading = false;
         state.signupError = action.payload;
       })
-    }*/
+    }
   });
 
 export default signSlice.reducer;

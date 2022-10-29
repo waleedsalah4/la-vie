@@ -1,7 +1,7 @@
 import React from 'react'
-import SingleBlog from '../Blog/SingleBlog';
-import Footer from '../home/Footer';
-import Header from '../ui/Header';
+import SingleBlog from '../components/Blog/SingleBlog';
+import Footer from '../components/home/Footer';
+import Header from '../components/ui/Header';
 
 function SingleBlogPage() {
     

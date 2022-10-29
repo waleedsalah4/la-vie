@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../ui/Header'
-import Blog from '../Blog/Blog';
+import Header from '../components/ui/Header'
+import Blog from '../components/Blog/Blog';
 
 function BlogPage() {
   return (

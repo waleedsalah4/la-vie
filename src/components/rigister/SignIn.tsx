@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+import {login} from '../../store/signSlice';
+import { useAppDispatch } from '../../store';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 // import { login } from '../store/signSlice';
@@ -10,11 +12,14 @@ import { useForm } from "react-hook-form";
 import Box from '@mui/material/Box';
 
 function SignIn() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = (data: object) => console.log(data);
+  const onSubmit = (data: object) => {
+    // console.log(data);
+    dispatch(login(data))
+  };
   // const {userData, isLoading, LogError} = useSelector((state)=> state.signSlice)
   
   // useEffect(()=>{

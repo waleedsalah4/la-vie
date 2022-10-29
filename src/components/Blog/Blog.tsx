@@ -1,5 +1,9 @@
-import * as React from 'react';
+import React
+// , {useEffect}
+ from 'react';
 import { useNavigate } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { useAppDispatch } from '../../store';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -7,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import blog1 from '../../assests/home/blog1.png';
 import blog2 from '../../assests/home/blog2.png';
 import blog3 from '../../assests/home/blog3.png';
+// import { getAllBlogs } from '../../store/blogSlice';
 
 const categories = [
     {
@@ -55,6 +60,12 @@ const categories = [
 
 function Blog() {
     const navigate = useNavigate();
+    // const dispatch = useAppDispatch()
+    // useEffect(() => {
+        
+    //     dispatch(getAllBlogs())
+    // },[])
+
     const goTosingleBlog = (id: string) => {
         navigate(`/blog/${id}`)
     }
