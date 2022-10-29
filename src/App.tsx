@@ -22,7 +22,7 @@ function App() {
         <Route path='/shop' element={<ShopPage />} />
         <Route path='/blog' element={<BlogPage />} />
         <Route path='/blog/:id' element={<SingleBlogPage />} />
-        <Route path='/about' element={<AboutPage />} />
+        <Route path='/about' element={<HomePage />} />
         <Route path='/community' element={<CommunityPage />} />
         <Route path='/cart' element={<CartPage />} />
         <Route path='/signin' element={<SignInPage />} />

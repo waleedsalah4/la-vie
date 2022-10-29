@@ -1,3 +1,31 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { baseURL } from '../config';
+
+
+export const login = createApi({
+  reducerPath: 'login',
+  baseQuery: fetchBaseQuery({baseUrl: baseURL}),
+  endpoints: (builder) => ({
+    logUserIn: builder.mutation({
+      query: (data: {email: string, password: string})=> {
+        console.log(data)
+        return {
+          url: 'api/v1/auth/signin',
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(data)
+        }
+      }
+      
+    })
+  })
+})
+
+export const {useLogUserInMutation} = login;
+/*
 import { createSlice, createAsyncThunk, PayloadAction, ActionReducerMapBuilder } from '@reduxjs/toolkit';
 // import { boolean } from 'yup';
 import { baseURL } from '../config';
@@ -122,3 +150,4 @@ const signSlice = createSlice({
 
 export default signSlice.reducer;
 
+*/

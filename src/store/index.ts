@@ -1,17 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import signSlice from "./signSlice";
+import { setupListeners } from '@reduxjs/toolkit/query/react';
+import { login } from "./signSlice";
 const store = configureStore({
     reducer: { 
-        signSlice
-    }
+        [login.reducerPath]: login.reducer
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(login.middleware)
+    
 })
 
-
+export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>
-export type AddDispatch = typeof store.dispatch;
-
-export const useAppDispatch = () => useDispatch<AddDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
+setupListeners(store.dispatch);
 export default store

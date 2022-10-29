@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import {login} from '../../store/signSlice';
-import { useAppDispatch } from '../../store';
+// import {login} from '../../store/signSlice';
+// import { useAppDispatch } from '../../store';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup';
-// import { login } from '../store/signSlice';
 import Box from '@mui/material/Box';
+import { useLogUserInMutation } from '../../store/signSlice';
 
 interface FormValues {
   email: string;
@@ -15,34 +15,38 @@ interface FormValues {
 };
 
 const SignIn: React.FC = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  // const dispatch = useAppDispatch();
 
   const formSchema = Yup.object().shape({
     password: Yup.string()
-      .required("Password is required")
-      .min(8, "Password length should be at least 8 characters"),
+    .required("Password is required")
+    .min(8, "Password length should be at least 8 characters"),
     email: Yup.string()
-      .required('Email is required')
-      .email('Email is invalid'),
-  
+    .required('Email is required')
+    .email('Email is invalid'),
+    
   });
 
+  const [logUserIn,{isLoading,isSuccess, isError,error,data}] = useLogUserInMutation()
+  // console.log('isLoading', isLoading);
+  // console.log('error', error)
+  // console.log('data', data)
+
   const { register, handleSubmit, watch, formState: { errors } } = useForm<FormValues>({
-    // mode: "onTouched",
     resolver: yupResolver(formSchema)
   });
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
-    // dispatch(login(data))
+  const onSubmit = async(data: FormValues) => {
+    // console.log(data);
+    await logUserIn(data)
   };
   // const {userData, isLoading, LogError} = useSelector((state)=> state.signSlice)
   
-  // useEffect(()=>{
-  //   if(userData){
-  //     navigate('/home')
-  //   }
-  // },[userData,navigate])
+  useEffect(()=>{
+    if(isSuccess){
+        navigate('/home')
+    }
+  },[isSuccess])
 
   return (
     <>

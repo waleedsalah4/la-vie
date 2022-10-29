@@ -15,6 +15,7 @@ module.exports = {
       'blogText': '#6C6C6C',
       'heat': 'rgba(26, 188, 0, 0.05)',
       'bgCart': '#F4F4F4',
+      'post': 'rgba(0, 0, 0, 0.4)',
       'footer': '#FAFAFA',
     },
     fontFamily: {
