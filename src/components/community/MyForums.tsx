@@ -40,8 +40,10 @@ const MyForums = () => {
       {/* {formusItems.map((item) => (
         <SingleForum key={item.forumId} item={item}/>
       ))} */}
-      <SingleForum />
-      <SingleForum />
+      <div className='flex flex-col'>
+        <SingleForum />
+        <SingleForum />
+      </div>
     </>
   )
 }

@@ -4,7 +4,10 @@ import SingleForum from './SingleForum'
 function AllForums() {
     return (
         <>
-            <SingleForum />
+            <div className='flex flex-col'>
+                <SingleForum />
+                <SingleForum />
+            </div>
         </>
     )
 }
