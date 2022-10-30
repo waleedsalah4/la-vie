@@ -1,6 +1,5 @@
 import React from 'react'
 import { Facebook } from '@mui/icons-material';
-import facebopkImg from '../../assests/sign/Facebook.png';
 import googleImg from '../../assests/sign/Google.png';
 
 

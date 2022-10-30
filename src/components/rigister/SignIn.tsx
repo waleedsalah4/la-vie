@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import {login} from '../../store/signSlice';
 // import { useAppDispatch } from '../../store';
+import { useLogUserInMutation } from '../../store/signSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup';
 import Box from '@mui/material/Box';
-import { useLogUserInMutation } from '../../store/signSlice';
+import {Toast} from '../utilties/sweetAlert';
 
 interface FormValues {
   email: string;
@@ -28,12 +27,16 @@ const SignIn: React.FC = () => {
     
   });
 
-  const [logUserIn,{isLoading,isSuccess, isError,error,data}] = useLogUserInMutation()
-  // console.log('isLoading', isLoading);
-  // console.log('error', error)
-  // console.log('data', data)
+  const [logUserIn,{
+      isLoading,
+      isSuccess, 
+      isError,
+      error,
+      data
+  }] = useLogUserInMutation()
+ 
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormValues>({
+  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: yupResolver(formSchema)
   });
   const onSubmit = async(data: FormValues) => {
@@ -44,9 +47,19 @@ const SignIn: React.FC = () => {
   
   useEffect(()=>{
     if(isSuccess){
-        navigate('/home')
+      localStorage.setItem('user-data', JSON.stringify(data.data))
+      navigate('/')
     }
-  },[isSuccess])
+  },[isSuccess, navigate])
+
+  useEffect(()=>{
+    if(isError){
+      Toast.fire({
+        icon: 'error',
+        title: (error as any).data.message
+      })
+    }
+  },[isError, error])
 
   return (
     <>
@@ -88,10 +101,9 @@ const SignIn: React.FC = () => {
                   // fullWidth
                   // variant="contained"
                   // sx={{ mt: 3, mb: 2, backgroundColor: '#1ABC00' }}
-                  // disabled={isLoading}
+                  disabled={isLoading}
                   >
-                  {/* {isLoading ? 'Signing...' : 'Sign In'} */}
-                  Sign in
+                  {isLoading ? 'Signing...' : 'Sign In'}
                 </button>
                 <div className='w-[80%] text-center'>
                     <Link to="/signup" >

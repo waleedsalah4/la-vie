@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { baseURL } from '../config';
 
-
 export const login = createApi({
   reducerPath: 'login',
   baseQuery: fetchBaseQuery({baseUrl: baseURL}),
@@ -12,19 +11,26 @@ export const login = createApi({
         return {
           url: 'api/v1/auth/signin',
           method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(data)
+          body: data
         }
       }
       
-    })
+    }),
+    signUserUp: builder.mutation({
+      query: (data: {firstName:string, lastName:string, email: string, password: string})=> {
+        console.log(data)
+        return {
+          url: 'api/v1/auth/signup',
+          method: 'POST',
+          body: data
+        }
+      }
+      
+    }),
   })
 })
 
-export const {useLogUserInMutation} = login;
+export const {useLogUserInMutation, useSignUserUpMutation} = login;
 /*
 import { createSlice, createAsyncThunk, PayloadAction, ActionReducerMapBuilder } from '@reduxjs/toolkit';
 // import { boolean } from 'yup';

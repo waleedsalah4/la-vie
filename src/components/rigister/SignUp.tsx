@@ -3,28 +3,47 @@ import React, {useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // import { signup } from '../../store/signSlice';
 import { useForm } from "react-hook-form";
+import { useSignUserUpMutation } from '../../store/signSlice';
 // import { useAppDispatch, useAppSelector } from '../../store';
 // import FeedBack from '../utilities/FeedBack';
+import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup';
+import {Toast} from '../utilties/sweetAlert';
 
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
+interface FormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string,
+};
 
-
-function SignUp() {
+const SignUp =() => {
   // const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  //const {userData, isLoading, signupError} = useSelector((state)=> state.signSlice)
+  const [signUserUp,{isLoading,isSuccess,isError,error,data}] = useSignUserUpMutation()
+ 
+ 
+  useEffect(()=>{
+    if(isSuccess){
+      localStorage.setItem('user-data', JSON.stringify(data.data))
+      navigate('/')
+    }
+  },[isSuccess, navigate])
 
-  // useEffect(()=>{
-  //   if(userData){
-  //     navigate('/home')
-  //   }
-  // },[userData,navigate])
-/*
-  const validate = Yup.object({
+  useEffect(()=>{
+    if(isError){
+      Toast.fire({
+        icon: 'error',
+        title: (error as any).data.message
+      })
+    }
+  },[isError,error])
+
+  const formSchema = Yup.object().shape({
     firstName: Yup.string()
       .min(3, 'Must be more that 3 characters')
       .required('Required'),
@@ -34,20 +53,18 @@ function SignUp() {
     email: Yup.string()
       .email('Email is invalid')
       .required('Email is required'),
-    country: Yup.string()
-      .required('Password is required'),
     password: Yup.string()
       .min(8, 'Password must be at least 8 charaters')
       .required('Password is required'),
-    passwordConfirm: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Password must match')
-      .required('Confirm password is required'),
+
   })
-*/
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = (data: object) => {
-    // dispatch(signup(data))
-    console.log(data)
+
+  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
+    resolver: yupResolver(formSchema)
+  });
+  const onSubmit = async(data: FormValues) => {
+    // console.log(data)
+    await signUserUp(data)
   };
 
   return (
@@ -113,10 +130,9 @@ function SignUp() {
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2,backgroundColor: '#1ABC00'  }}
-                    // disabled={isLoading}
+                    disabled={isLoading}
                   >
-                   {/* {isLoading ? 'Signing...' : 'Sign Up'} */}
-                   Sign Up
+                   {isLoading ? 'Signing...' : 'Sign Up'}
                   </Button>
                   <Grid container justifyContent="flex-end">
                     <Grid item>
