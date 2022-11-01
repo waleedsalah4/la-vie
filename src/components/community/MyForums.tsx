@@ -1,6 +1,7 @@
 import React from 'react';
 import SingleForum from './SingleForum';
-import {formusItems } from '../../dummyData'
+// import {formusItems } from '../../dummyData'
+import { Item, Items } from './types';
 /*
 interface likes {
   forumId: string,
@@ -34,15 +35,15 @@ interface props  {
   items: Item[]
 }
 */
-const MyForums = () => {
+const MyForums: React.FC<{formusItems: Item[]}> = ({formusItems}) => {
   return (
     <>
-      {/* {formusItems.map((item) => (
+      <div className='flex flex-col w-[100%] sm:max-w-[70%]'>
+        {/* <SingleForum />
+        <SingleForum /> */}
+      {formusItems.map((item) => (
         <SingleForum key={item.forumId} item={item}/>
-      ))} */}
-      <div className='flex flex-col'>
-        <SingleForum />
-        <SingleForum />
+      ))}
       </div>
     </>
   )

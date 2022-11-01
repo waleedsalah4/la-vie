@@ -1,12 +1,14 @@
 import React from 'react'
 import SingleForum from './SingleForum'
+import { Item } from './types'
 
-function AllForums() {
+const AllForums: React.FC<{formusItems: Item[]}>  = ({formusItems}) => {
     return (
         <>
-            <div className='flex flex-col'>
-                <SingleForum />
-                <SingleForum />
+            <div className='flex flex-col w-[100%] sm:max-w-[70%]'>
+            {formusItems.map((item) => (
+                <SingleForum key={item.forumId} item={item}/>
+            ))}
             </div>
         </>
     )

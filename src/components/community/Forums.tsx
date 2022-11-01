@@ -1,14 +1,21 @@
-import React from 'react';
-// import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import AllForums from './AllForums';
 import CreatePost from './CreatePost';
 import MyForums from './MyForums';
-// import {formusItems} from '../../dummyData';
+//import { useGetAllForumsQuery } from '../../store/forumsSlice';
+//import {useGetAllForumsQuery} from '../../store/forumsSlice';
+import {formusItems} from '../../dummyData';
 
 
-function Forums() {
-    // const navigate = useNavigate();
+const Forums =()=> {
     const [isMe, setIsMe] = React.useState(false);
+    //const [getAllForums,{isLoading}] = useGetAllForumsQuery()
+    // const [getAllForums,{}] = useGetAllForumsQuery()
+
+    useEffect(()=>{
+
+    })
+
     const handelShowAllForms = () => {
         setIsMe(false)
     }
@@ -33,7 +40,7 @@ function Forums() {
                 </button>
             </div>
             <div className='flex flex-col-reverse sm:flex-row justify-around mt-4 gap-x-2 gap-y-2'>
-             {isMe ? <MyForums  /> : <AllForums />}
+             {isMe ? <MyForums formusItems={formusItems}  /> : <AllForums  formusItems={formusItems}/>}
                 <CreatePost />
             </div>
         </div>

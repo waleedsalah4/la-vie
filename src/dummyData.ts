@@ -1,3 +1,5 @@
+import { Item } from "./components/community/types"
+
 export const cartItems= [
    {
         img: 'https://lavie.orangedigitalcenteregypt.com/uploads/4b9766af-1eb1-43ab-973c-7da2a209c94f.png',
@@ -57,13 +59,13 @@ export const shopData= [
  ]
 
 
- export const formusItems= [
+ export const formusItems:Item[] = [
     {
         forumId: "00a52d59-e3c4-473e-9fa5-48b050c12a60",
         title: "ok",
         description: "ok",
         imageUrl: "https://lavie.orangedigitalcenteregypt.com/uploads/4b9766af-1eb1-43ab-973c-7da2a209c94f.png",
-            "userId": "2abf72ff-a3a1-4fbc-a5e2-9fb06e379ba6",
+        "userId": "2abf72ff-a3a1-4fbc-a5e2-9fb06e379ba6",
         user: {
             firstName: 'Mayar',
             lastName: 'Mohamed',
@@ -81,6 +83,10 @@ export const shopData= [
             {
                 "forumId": "00a52d59-e3c4-473e-9fa5-48b050c12a60",
                 "userId": "6f058669-be8b-4859-adbf-bb41f9926a10"
+            },
+            {
+                "forumId": "00a52d59-e3c4-473e-9fa5-48b050c12a60",
+                "userId": "6f058669-be8b-4859-adbf-bb41f9926a1i"
             },
         ],
         ForumComments: [
@@ -105,7 +111,7 @@ export const shopData= [
         title: "How To  treat cactus plant ?",
         description: "leaf, in botany, any usually flattened green outgrowth from the stem of a vascular plant. As the primary sites of photosynthesis, leaves manufacture food for plants, which in turn ultimately nourish and",
         imageUrl: "https://lavie.orangedigitalcenteregypt.com/uploads/4b9766af-1eb1-43ab-973c-7da2a209c94f.png",
-            "userId": "2abf72ff-a3a1-4fbc-a5e2-9fb06e379ba6",
+        "userId": "2abf72ff-a3a1-4fbc-a5e2-9fb06e379ba6",
         user: {
             firstName: 'Mayar',
             lastName: 'Mohamed',
@@ -145,4 +151,5 @@ export const shopData= [
      
 ]
 
-export const token: any = localStorage.getItem('token')
+// export const token: any = localStorage.getItem('token')
+export const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5OTdmMzQ4ZC0xMzQ1LTQ4MjAtODc3Yy05YjdhNGNmNDE3NDYiLCJpYXQiOjE2NjcyMjIyMjUsImV4cCI6MTY2NzM5NTAyNX0.-d6ITO2QNiJ-220tRRtteMEjDbbAIrNWXqlKVyjuj_s'
