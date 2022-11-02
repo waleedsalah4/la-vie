@@ -1,26 +1,32 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AllForums from './AllForums';
 import CreatePost from './CreatePost';
 import MyForums from './MyForums';
-//import { useGetAllForumsQuery } from '../../store/forumsSlice';
-//import {useGetAllForumsQuery} from '../../store/forumsSlice';
+import { useGetAllForumsQuery } from '../../store/forumsSlice';
 import {formusItems} from '../../dummyData';
 
 
 const Forums =()=> {
     const [isMe, setIsMe] = React.useState(false);
-    //const [getAllForums,{isLoading}] = useGetAllForumsQuery()
-    // const [getAllForums,{}] = useGetAllForumsQuery()
-
-    useEffect(()=>{
-
+    const [page,setPage] = React.useState<number>(1)
+    const [skip,setSkip] = React.useState(false)
+    const {data, error} = useGetAllForumsQuery(page, {
+        skip
     })
+    // const [getAllForums,{}] = useGetAllForumsQuery()
+    console.log(data)
+    console.log(error)
+    // useEffect(()=>{
+
+    // },[])
 
     const handelShowAllForms = () => {
         setIsMe(false)
     }
     const handelShowMyForms = () => {
-        setIsMe(true)
+        // setIsMe(true)
+        setPage(page+ 1)
+        // setSkip(false)
     }
     return (
         // <div className='flex'>
